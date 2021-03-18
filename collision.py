@@ -117,14 +117,15 @@ class collision:
 
                 # print(gb.display[y][x+x1], x1)
                 x1 += 1
-            self.brickLvlDown(y,x+5)
-            self.brickLvlDown(y,x-5)
-            self.brickLvlDown(y+1,x+5)
-            self.brickLvlDown(y+1,x-5)
-            self.brickLvlDown(y-1,x+5)
-            self.brickLvlDown(y-1,x-5)
-            self.brickLvlDown(y+1,x)
-            self.brickLvlDown(y-1,x)
+            if x>4 and x < 117:
+                self.brickLvlDown(y,x+5)
+                self.brickLvlDown(y,x-5)
+                self.brickLvlDown(y+1,x+5)
+                self.brickLvlDown(y+1,x-5)
+                self.brickLvlDown(y-1,x+5)
+                self.brickLvlDown(y-1,x-5)
+                self.brickLvlDown(y+1,x)
+                self.brickLvlDown(y-1,x)
         
 
 

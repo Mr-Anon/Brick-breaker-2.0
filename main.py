@@ -67,15 +67,19 @@ def input_to(timeout=1):
 curlvl = gb.Current_lvl
 set = setup.setup()
 set.createlvl1()
-slider_x = 57
+slider_x = 61
 slider_y = 35
 
 
 while True:
-    os.system('clear')
+    # os.system('clear')
     set.display1.renderDisplay()
+    if gb.Current_lvl > 3:
+        print("ggwp")
+        sys.exit()
     if curlvl != gb.Current_lvl:
         deactiveallpp(set)
+        slider_x = 61
         print("lvl 2 should start now")
         curlvl = gb.Current_lvl
         if curlvl == 2:
@@ -109,7 +113,15 @@ while True:
                 gb.grab = False
                 gb.display[34] = -1
             elif c == 'l':
+                set.ball1.updateYX(set.slider.Ycor-1, set.slider.Xcor+3)
+                slider_x = 61
+                # time.sleep(1)
+                gb.lvlupkeypress = True
                 set.display1.lvlup()
+                set = setup.setup()
+                print(set.slider.Xcor)
+                set.ball1.updateYX(set.slider.Ycor-1, set.slider.Xcor+3)
+
             elif c == "a":
                 if slider_x >= 0:
                     slider_x -= 1

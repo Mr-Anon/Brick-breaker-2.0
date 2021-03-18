@@ -66,6 +66,8 @@ class display:
                 gb.display[slider.Ycor][a] = -1
             for b in range(slider.Xcor+slider.slider_length, 122):
                 gb.display[slider.Ycor][b] = -1
+        # print(slider.Xcor,"gorhoepwgnp")
+        # print(slider.slider_length,"gorhoepwgnp")
 
     def dropPowerUP(self, powerups, set):
         for powerup in powerups:
@@ -76,7 +78,16 @@ class display:
     def lvlup(self):
         self.clearAllPowerUps()
         print("lvl" + str(gb.Current_lvl+1) + "Approaching")
+        # gb.display[35] = -1
         # time.sleep(2)
+        gb.Xspeed = 0
+        gb.Yspeed = -1
+        gb.motionUp = True
+        gb.motionRight = True
+        gb.grab = True
+        gb.exp = False
+        gb.thru = False
+        gb.pugrab = False
         gb.Current_lvl += 1
 
     def updateBall(self, set, ball, Yspeed, Xspeed):
@@ -164,8 +175,8 @@ class display:
 
     def renderDisplay(self):
         isBrick = False
-        print("                                  Lives: ", gb.lives,
-              "          Score: ", gb.score, "          Time: ", gb.time)
+        print("          lvl: ", gb.Current_lvl ,  "         Lives: ", gb.lives,
+              "        Score: ", gb.score, "        Time: ", gb.time)
         for y in range(0, 36):
             x = 0
             print("|", end='')
@@ -246,4 +257,6 @@ class display:
             print('|\n', end='')
 
         if not(isBrick):
-            self.lvlup()
+            if not(gb.lvlupkeypress):
+                self.lvlup()
+            gb.lvlupkeypress == False

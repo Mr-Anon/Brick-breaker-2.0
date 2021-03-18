@@ -2,7 +2,7 @@
 display_length = 122
 display_breadth = 36
 display = [[-1]*122]*36
-timeout = 0.1
+timeout = 0
 
 # Ball
 Xspeed = 0
@@ -24,6 +24,7 @@ lives = 10
 exp = False
 thru = False
 pugrab = False
+lvlupkeypress = False
 tempsliderlen = 0
 tempogtimeout = 0
 Current_lvl = 1 
