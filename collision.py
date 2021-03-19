@@ -75,7 +75,7 @@ class collision:
                     # print(gb.display[y][x+x1], x1)
                     x1 += 1
 
-            if og_lvl == 0 or gb.exp or gb.thru:
+            if (og_lvl == 0 or gb.exp or gb.thru) and gb.Current_lvl != 4:
                 a = random.randint(0, 5)
                 if a < 5:
                     # print("drop powerUp")

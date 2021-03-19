@@ -155,8 +155,8 @@ while True:
 
                 set.display1.updateSlider(set.slider)
                 # block.moveLeft(sc, bl)
-            # if c:
-            #     time.sleep(.05)
+            if c:
+                time.sleep(.05)
 
         gb.powerup = set.display1.dropPowerUP(gb.powerup, set)
         if not(gb.grab):

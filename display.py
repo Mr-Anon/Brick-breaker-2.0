@@ -273,6 +273,14 @@ class display:
 
     def renderDisplay(self, set):
         isBrick = False
+        if gb.bosskihealth == 5 and gb.Current_lvl == 4:
+            gb.bosskihealth -=1
+            x = 0
+            while x < 120:
+                if x % 10 == 1 or x % 10 == 6:
+                    for i in range(0,4):
+                        gb.display[18][x+i] = 0
+                x+=1
         if gb.shootingslider:
             print("          lvl: ", gb.Current_lvl,  "         Lives: ", gb.lives,
                   "        Score: ", gb.score, "        Time: ", gb.time, "      Shoot rem time:", 30 - (gb.time - gb.shoottime))

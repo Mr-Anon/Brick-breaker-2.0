@@ -45,4 +45,4 @@ fireballtime = 0
 bullets = []
 
 
-bosskihealth = 15
+bosskihealth = 5
