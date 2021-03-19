@@ -129,73 +129,92 @@ class collision:
                 self.brickLvlDown(y+1, x)
                 self.brickLvlDown(y-1, x)
         elif gb.display[y][x] == 111:
-            if gb.time % 3 == 0:
-                gb.score += 1
+            if gb.exp:
                 og_lvl = gb.display[y][x]
-                if not(gb.exp) and not(gb.thru):
-                    x1 = 0
-                    while x1 < 4:
-                        if gb.display[y][x+x1] == og_lvl:
-                            gb.display[y][x+x1] = 0
-                        else:
-                            x2 = 1
-                            while x2 < 4:
-                                if gb.display[y][x-x2] == og_lvl:
-                                    gb.display[y][x-x2] = 0
-                                else:
-                                    break
-
-                                # print(gb.display[y][x-x2], x2)
-                                x2 += 1
-                            break
-
-                        # print(gb.display[y][x+x1], x1)
-                        x1 += 1
-
-            elif gb.time % 2 == 0:
-                gb.score += 1
-                og_lvl = gb.display[y][x]
-                if not(gb.exp) and not(gb.thru):
-                    x1 = 0
-                    while x1 < 4:
-                        if gb.display[y][x+x1] == og_lvl:
-                            gb.display[y][x+x1] = 1
-                        else:
-                            x2 = 1
-                            while x2 < 4:
-                                if gb.display[y][x-x2] == og_lvl:
-                                    gb.display[y][x-x2] = 1
-                                else:
-                                    break
-
-                                # print(gb.display[y][x-x2], x2)
-                                x2 += 1
-                            break
-
-                        # print(gb.display[y][x+x1], x1)
-                        x1 += 1
+                x1 = 0
+                while x1 < 4:
+                    if gb.display[y][x+x1] == og_lvl:
+                        gb.display[y][x+x1] = -1
+                    else:
+                        x2 = 1
+                        while x2 < 4:
+                            if gb.display[y][x-x2] == og_lvl:
+                                gb.display[y][x-x2] = -1
+                            else:
+                                break
+                            # print(gb.display[y][x-x2], x2)
+                            x2 += 1
+                        break
+                    # print(gb.display[y][x+x1], x1)
+                    x1 += 1
             else:
-                gb.score += 1
-                og_lvl = gb.display[y][x]
-                if not(gb.exp) and not(gb.thru):
-                    x1 = 0
-                    while x1 < 4:
-                        if gb.display[y][x+x1] == og_lvl:
-                            gb.display[y][x+x1] = 2
-                        else:
-                            x2 = 1
-                            while x2 < 4:
-                                if gb.display[y][x-x2] == og_lvl:
-                                    gb.display[y][x-x2] = 2
-                                else:
-                                    break
+                if gb.time % 3 == 0:
+                    gb.score += 1
+                    og_lvl = gb.display[y][x]
+                    if not(gb.exp) and not(gb.thru):
+                        x1 = 0
+                        while x1 < 4:
+                            if gb.display[y][x+x1] == og_lvl:
+                                gb.display[y][x+x1] = 0
+                            else:
+                                x2 = 1
+                                while x2 < 4:
+                                    if gb.display[y][x-x2] == og_lvl:
+                                        gb.display[y][x-x2] = 0
+                                    else:
+                                        break
 
-                                # print(gb.display[y][x-x2], x2)
-                                x2 += 1
-                            break
+                                    # print(gb.display[y][x-x2], x2)
+                                    x2 += 1
+                                break
 
-                        # print(gb.display[y][x+x1], x1)
-                        x1 += 1
+                            # print(gb.display[y][x+x1], x1)
+                            x1 += 1
+
+                elif gb.time % 2 == 0:
+                    gb.score += 1
+                    og_lvl = gb.display[y][x]
+                    if not(gb.exp) and not(gb.thru):
+                        x1 = 0
+                        while x1 < 4:
+                            if gb.display[y][x+x1] == og_lvl:
+                                gb.display[y][x+x1] = 1
+                            else:
+                                x2 = 1
+                                while x2 < 4:
+                                    if gb.display[y][x-x2] == og_lvl:
+                                        gb.display[y][x-x2] = 1
+                                    else:
+                                        break
+
+                                    # print(gb.display[y][x-x2], x2)
+                                    x2 += 1
+                                break
+
+                            # print(gb.display[y][x+x1], x1)
+                            x1 += 1
+                else:
+                    gb.score += 1
+                    og_lvl = gb.display[y][x]
+                    if not(gb.exp) and not(gb.thru):
+                        x1 = 0
+                        while x1 < 4:
+                            if gb.display[y][x+x1] == og_lvl:
+                                gb.display[y][x+x1] = 2
+                            else:
+                                x2 = 1
+                                while x2 < 4:
+                                    if gb.display[y][x-x2] == og_lvl:
+                                        gb.display[y][x-x2] = 2
+                                    else:
+                                        break
+
+                                    # print(gb.display[y][x-x2], x2)
+                                    x2 += 1
+                                break
+
+                            # print(gb.display[y][x+x1], x1)
+                            x1 += 1
 
     def ballSpeedChangeOn(self, y, x):
         if gb.display[y][x] == 2019111026:
@@ -229,9 +248,9 @@ class collision:
 
     def withTop(self, y, x):
         if gb.fireball:
-            gb.display[y][x] == 69
             gb.score += 1
             og_lvl = gb.display[y][x]
+            gb.display[y][x] == 69
             if not(gb.exp) and not(gb.thru):
                 x1 = 0
                 while x1 < 4:
@@ -260,10 +279,10 @@ class collision:
             gb.score += 2
 
     def withBottom(self, y, x):
-        if gb.fireball:
-            gb.display[y][x] == 69
+        if gb.fireball and gb.display[y][x]!=2019111026:
             gb.score += 1
             og_lvl = gb.display[y][x]
+            gb.display[y][x] == 69
             if not(gb.exp) and not(gb.thru):
                 x1 = 0
                 while x1 < 4:
@@ -293,10 +312,10 @@ class collision:
             gb.score += 2
 
     def withRight(self, y, x):
-        if gb.fireball:
-            gb.display[y][x] == 69
+        if gb.fireball and x < 119:
             gb.score += 1
             og_lvl = gb.display[y][x]
+            gb.display[y][x] == 69
             if not(gb.exp) and not(gb.thru):
                 x1 = 0
                 while x1 < 4:
@@ -326,9 +345,9 @@ class collision:
 
     def withLeft(self, y, x):
         if gb.fireball:
-            gb.display[y][x] == 69
             gb.score += 1
             og_lvl = gb.display[y][x]
+            gb.display[y][x] == 69
             if not(gb.exp) and not(gb.thru):
                 x1 = 0
                 while x1 < 4:
@@ -358,9 +377,9 @@ class collision:
 
     def withTopRight(self, y, x):
         if gb.fireball:
-            gb.display[y][x] == 69
             gb.score += 1
             og_lvl = gb.display[y][x]
+            gb.display[y][x] == 69
             if not(gb.exp) and not(gb.thru):
                 x1 = 0
                 while x1 < 4:
@@ -392,9 +411,9 @@ class collision:
 
     def withTopLeft(self, y, x):
         if gb.fireball:
-            gb.display[y][x] == 69
             gb.score += 1
             og_lvl = gb.display[y][x]
+            gb.display[y][x] == 69
             if not(gb.exp) and not(gb.thru):
                 x1 = 0
                 while x1 < 4:
@@ -426,9 +445,9 @@ class collision:
 
     def withBottomRight(self, y, x):
         if gb.fireball:
-            gb.display[y][x] == 69
             gb.score += 1
             og_lvl = gb.display[y][x]
+            gb.display[y][x] == 69
             if not(gb.exp) and not(gb.thru):
                 x1 = 0
                 while x1 < 4:
@@ -460,9 +479,9 @@ class collision:
 
     def withBottomLeft(self, y, x):
         if gb.fireball:
-            gb.display[y][x] == 69
             gb.score += 1
             og_lvl = gb.display[y][x]
+            gb.display[y][x] == 69
             if not(gb.exp) and not(gb.thru):
                 x1 = 0
                 while x1 < 4:

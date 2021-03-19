@@ -3,6 +3,7 @@ import numpy
 import bricks
 import slider
 import sys
+import os
 import time
 import ball
 import collision

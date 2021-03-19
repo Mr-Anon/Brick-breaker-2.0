@@ -18,7 +18,7 @@ getch = GetchUnix()
 
 
 def endpu(set):
-    timeout = 30
+    timeout = 300
     if int(gb.time) > int(gb.expandtime) + timeout:
         for powerup in gb.actpowerup:
             if powerup.powerupNum == 12301:
