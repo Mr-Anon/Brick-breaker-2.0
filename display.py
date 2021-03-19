@@ -26,7 +26,7 @@ class display:
         for y in range(35, 0, -1):
             x = 0
             while x < 122:
-                if gb.display[y][x] == 0 or gb.display[y][x] == 1 or gb.display[y][x] == 2 or gb.display[y][x] == 3 or gb.display[y][x] == 4 or gb.display[y][x] == 69:
+                if gb.display[y][x] == 0 or gb.display[y][x] == 1 or gb.display[y][x] == 2 or gb.display[y][x] == 3 or gb.display[y][x] == 4 or gb.display[y][x] == 69 or gb.display[y][x] == 111:
                     gb.display[y+1][x] = gb.display[y][x]
                     gb.display[y][x] = -1
                 x += 1
@@ -89,6 +89,12 @@ class display:
         gb.thru = False
         gb.pugrab = False
         gb.Current_lvl += 1
+    # def rainBow(self):
+    #     for y in range(35, 0, -1):
+    #         x = 0
+    #         while x < 122:
+    #             if gb.display[y][x] == 111:
+
 
     def updateBall(self, set, ball, Yspeed, Xspeed):
         col = True
@@ -246,6 +252,21 @@ class display:
                         print(colorama.Back.LIGHTGREEN_EX+'____', end='')
                         print(colorama.Style.RESET_ALL, end='')
                         print(' ', end='')
+                    elif gb.display[y][x] == 111:
+                        isBrick = True
+                        if gb.time % 3 == 0:
+                            print(colorama.Back.YELLOW+'____', end='')
+                            print(colorama.Style.RESET_ALL, end='')
+                            print(' ', end='')
+                        elif gb.time % 2 == 0:
+                            print(colorama.Back.RED+'____', end='')
+                            print(colorama.Style.RESET_ALL, end='')
+                            print(' ', end='')
+                        else:
+                            print(colorama.Back.BLUE+'____', end='')
+                            print(colorama.Style.RESET_ALL, end='')
+                            print(' ', end='')
+
 
                     print(colorama.Style.RESET_ALL, end='')
                     x += 5

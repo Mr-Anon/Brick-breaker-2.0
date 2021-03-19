@@ -72,7 +72,7 @@ slider_y = 35
 
 
 while True:
-    # os.system('clear')
+    os.system('clear')
     set.display1.renderDisplay()
     if gb.Current_lvl > 3:
         print("ggwp")

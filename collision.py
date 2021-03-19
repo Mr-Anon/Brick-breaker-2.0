@@ -11,9 +11,9 @@ class collision:
     def brickLvlDown(self, y, x):
         if gb.display[y][x] == 4:
             if gb.exp or gb.thru:
-                gb.score +=1
+                gb.score += 1
                 og_lvl = gb.display[y][x]
-            
+
                 x1 = 0
                 while x1 < 4:
                     if gb.display[y][x+x1] == og_lvl:
@@ -34,7 +34,7 @@ class collision:
                     x1 += 1
 
         if gb.display[y][x] in range(0, 3):
-            gb.score +=1
+            gb.score += 1
             og_lvl = gb.display[y][x]
             if not(gb.exp) and not(gb.thru):
                 x1 = 0
@@ -75,12 +75,12 @@ class collision:
                     # print(gb.display[y][x+x1], x1)
                     x1 += 1
 
-            if og_lvl == 0 or gb.exp or gb.thru:    
+            if og_lvl == 0 or gb.exp or gb.thru:
                 a = random.randint(1, 5)
                 if a < 5:
                     # print("drop powerUp")
                     gb.no_of_powerups += 1
-                    pp = random.randint(1,5)
+                    pp = random.randint(1, 5)
                     if pp == 1:
                         self.powerup = powerUps.powerupExpandPaddle(y, x)
                     if pp == 2:
@@ -92,12 +92,12 @@ class collision:
                     if pp == 5:
                         self.powerup = powerUps.powerupPaddlegrab(y, x)
                     if pp == 6:
-                        self.powerup = powerUps.powerupBallMultiplier(y, x)
+                        self.powerup = powerUps.powerupShootingSlider(y, x)
                     # self.createPowerUP(self.powerup)
                     gb.powerup.append(self.powerup)
         elif gb.display[y][x] == 69:
             gb.exp = True
-            gb.score +=1
+            gb.score += 1
             og_lvl = gb.display[y][x]
             x1 = 0
             while x1 < 4:
@@ -117,19 +117,84 @@ class collision:
 
                 # print(gb.display[y][x+x1], x1)
                 x1 += 1
-            if x>4 and x < 117:
-                self.brickLvlDown(y,x+5)
-                self.brickLvlDown(y,x-5)
-                self.brickLvlDown(y+1,x+5)
-                self.brickLvlDown(y+1,x-5)
-                self.brickLvlDown(y-1,x+5)
-                self.brickLvlDown(y-1,x-5)
-                self.brickLvlDown(y+1,x)
-                self.brickLvlDown(y-1,x)
-        
+            if x > 4 and x < 117:
+                self.brickLvlDown(y, x+5)
+                self.brickLvlDown(y, x-5)
+                self.brickLvlDown(y+1, x+5)
+                self.brickLvlDown(y+1, x-5)
+                self.brickLvlDown(y-1, x+5)
+                self.brickLvlDown(y-1, x-5)
+                self.brickLvlDown(y+1, x)
+                self.brickLvlDown(y-1, x)
+        elif gb.display[y][x] == 111:
+            if gb.time % 3 == 0:
+                gb.score += 1
+                og_lvl = gb.display[y][x]
+                if not(gb.exp) and not(gb.thru):
+                    x1 = 0
+                    while x1 < 4:
+                        if gb.display[y][x+x1] == og_lvl:
+                            gb.display[y][x+x1] = 0
+                        else:
+                            x2 = 1
+                            while x2 < 4:
+                                if gb.display[y][x-x2] == og_lvl:
+                                    gb.display[y][x-x2] = 0
+                                else:
+                                    break
 
+                                # print(gb.display[y][x-x2], x2)
+                                x2 += 1
+                            break
 
+                        # print(gb.display[y][x+x1], x1)
+                        x1 += 1
 
+                
+            elif gb.time % 2 == 0:
+                gb.score += 1
+                og_lvl = gb.display[y][x]
+                if not(gb.exp) and not(gb.thru):
+                    x1 = 0
+                    while x1 < 4:
+                        if gb.display[y][x+x1] == og_lvl:
+                            gb.display[y][x+x1] = 1
+                        else:
+                            x2 = 1
+                            while x2 < 4:
+                                if gb.display[y][x-x2] == og_lvl:
+                                    gb.display[y][x-x2] = 1
+                                else:
+                                    break
+
+                                # print(gb.display[y][x-x2], x2)
+                                x2 += 1
+                            break
+
+                        # print(gb.display[y][x+x1], x1)
+                        x1 += 1
+            else:
+                gb.score += 1
+                og_lvl = gb.display[y][x]
+                if not(gb.exp) and not(gb.thru):
+                    x1 = 0
+                    while x1 < 4:
+                        if gb.display[y][x+x1] == og_lvl:
+                            gb.display[y][x+x1] = 2
+                        else:
+                            x2 = 1
+                            while x2 < 4:
+                                if gb.display[y][x-x2] == og_lvl:
+                                    gb.display[y][x-x2] = 2
+                                else:
+                                    break
+
+                                # print(gb.display[y][x-x2], x2)
+                                x2 += 1
+                            break
+
+                        # print(gb.display[y][x+x1], x1)
+                        x1 += 1
     def ballSpeedChangeOn(self, y, x):
         if gb.display[y][x] == 2019111026:
             x1 = 0
@@ -149,13 +214,13 @@ class collision:
                     break
                 x1 += 1
             # print(countF, countB)
-            if countF == int(gb.tempsliderlen/2) +1:
+            if countF == int(gb.tempsliderlen/2) + 1:
                 gb.Xspeed = 0
             elif countF > countB:
-                gb.Xspeed = int(gb.tempsliderlen/2) +1 - countF
+                gb.Xspeed = int(gb.tempsliderlen/2) + 1 - countF
                 gb.motionRight = False
             elif countB > countF:
-                gb.Xspeed = countB - int(gb.tempsliderlen/2) 
+                gb.Xspeed = countB - int(gb.tempsliderlen/2)
                 gb.motionRight = True
         if gb.pugrab:
             gb.grab = True
@@ -181,10 +246,10 @@ class collision:
             self.ballSpeedChangeOn(y, x)
         else:
             self.brickLvlDown(y, x)
-            gb.score +=2
+            gb.score += 2
 
     def withRight(self, y, x):
-        if not(gb.thru) or  x >= 121:
+        if not(gb.thru) or x >= 121:
             gb.Xspeed -= gb.Xspeed*2
             print("collison right")
             gb.motionRight = False
@@ -192,7 +257,7 @@ class collision:
             self.brickLvlDown(y, x)
         else:
             self.brickLvlDown(y, x)
-            gb.score +=2
+            gb.score += 2
 
     def withLeft(self, y, x):
         if not(gb.thru) or x <= 1:
@@ -203,10 +268,10 @@ class collision:
             self.brickLvlDown(y, x)
         else:
             self.brickLvlDown(y, x)
-            gb.score +=2
+            gb.score += 2
 
     def withTopRight(self, y, x):
-        if not(gb.thru):   
+        if not(gb.thru):
             gb.Xspeed -= gb.Xspeed*2
             gb.Yspeed -= gb.Yspeed*2
             print("collison top right")
@@ -216,7 +281,7 @@ class collision:
             self.brickLvlDown(y, x)
         else:
             self.brickLvlDown(y, x)
-            gb.score +=2
+            gb.score += 2
 
     def withTopLeft(self, y, x):
         if not(gb.thru):
@@ -229,7 +294,7 @@ class collision:
             self.brickLvlDown(y, x)
         else:
             self.brickLvlDown(y, x)
-            gb.score +=2
+            gb.score += 2
 
     def withBottomRight(self, y, x):
         if not(gb.thru):
@@ -242,7 +307,7 @@ class collision:
             self.brickLvlDown(y, x)
         else:
             self.brickLvlDown(y, x)
-            gb.score +=2
+            gb.score += 2
 
     def withBottomLeft(self, y, x):
         if not(gb.thru):
@@ -255,10 +320,10 @@ class collision:
             self.brickLvlDown(y, x)
         else:
             self.brickLvlDown(y, x)
-            gb.score +=2
+            gb.score += 2
 
-    def puwithpadle(self,pu, set):
-        
+    def puwithpadle(self, pu, set):
+
         pu.startpu(set)
         gb.actpowerup.append(pu)
         print("pu caught")
