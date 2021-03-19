@@ -76,11 +76,11 @@ class collision:
                     x1 += 1
 
             if og_lvl == 0 or gb.exp or gb.thru:
-                a = random.randint(1, 5)
+                a = random.randint(0, 5)
                 if a < 5:
                     # print("drop powerUp")
                     gb.no_of_powerups += 1
-                    pp = random.randint(1, 5)
+                    pp = random.randint(7, 7)
                     if pp == 1:
                         self.powerup = powerUps.powerupExpandPaddle(y, x)
                     if pp == 2:
@@ -93,6 +93,8 @@ class collision:
                         self.powerup = powerUps.powerupPaddlegrab(y, x)
                     if pp == 6:
                         self.powerup = powerUps.powerupShootingSlider(y, x)
+                    if pp == 7:
+                        self.powerup = powerUps.powerupFireball(y, x)
                     # self.createPowerUP(self.powerup)
                     gb.powerup.append(self.powerup)
         elif gb.display[y][x] == 69:
@@ -150,7 +152,6 @@ class collision:
                         # print(gb.display[y][x+x1], x1)
                         x1 += 1
 
-                
             elif gb.time % 2 == 0:
                 gb.score += 1
                 og_lvl = gb.display[y][x]
@@ -195,6 +196,7 @@ class collision:
 
                         # print(gb.display[y][x+x1], x1)
                         x1 += 1
+
     def ballSpeedChangeOn(self, y, x):
         if gb.display[y][x] == 2019111026:
             x1 = 0
@@ -226,6 +228,27 @@ class collision:
             gb.grab = True
 
     def withTop(self, y, x):
+        if gb.fireball:
+            gb.display[y][x] == 69
+            gb.score += 1
+            og_lvl = gb.display[y][x]
+            if not(gb.exp) and not(gb.thru):
+                x1 = 0
+                while x1 < 4:
+                    if gb.display[y][x+x1] == og_lvl:
+                        gb.display[y][x+x1] = 69
+                    else:
+                        x2 = 1
+                        while x2 < 4:
+                            if gb.display[y][x-x2] == og_lvl:
+                                gb.display[y][x-x2] = 69
+                            else:
+                                break
+                            # print(gb.display[y][x-x2], x2)
+                            x2 += 1
+                        break
+                    # print(gb.display[y][x+x1], x1)
+                    x1 += 1
         if not(gb.thru) or y == 1:
             gb.Yspeed -= gb.Yspeed*2
             print("collison top", gb.display[y][x])
@@ -237,6 +260,27 @@ class collision:
             gb.score += 2
 
     def withBottom(self, y, x):
+        if gb.fireball:
+            gb.display[y][x] == 69
+            gb.score += 1
+            og_lvl = gb.display[y][x]
+            if not(gb.exp) and not(gb.thru):
+                x1 = 0
+                while x1 < 4:
+                    if gb.display[y][x+x1] == og_lvl:
+                        gb.display[y][x+x1] = 69
+                    else:
+                        x2 = 1
+                        while x2 < 4:
+                            if gb.display[y][x-x2] == og_lvl:
+                                gb.display[y][x-x2] = 69
+                            else:
+                                break
+                            # print(gb.display[y][x-x2], x2)
+                            x2 += 1
+                        break
+                    # print(gb.display[y][x+x1], x1)
+                    x1 += 1
         if not(gb.thru) or y == 35:
             gb.Yspeed -= gb.Yspeed*2
             print("collison bottom")
@@ -249,6 +293,27 @@ class collision:
             gb.score += 2
 
     def withRight(self, y, x):
+        if gb.fireball:
+            gb.display[y][x] == 69
+            gb.score += 1
+            og_lvl = gb.display[y][x]
+            if not(gb.exp) and not(gb.thru):
+                x1 = 0
+                while x1 < 4:
+                    if gb.display[y][x+x1] == og_lvl:
+                        gb.display[y][x+x1] = 69
+                    else:
+                        x2 = 1
+                        while x2 < 4:
+                            if gb.display[y][x-x2] == og_lvl:
+                                gb.display[y][x-x2] = 69
+                            else:
+                                break
+                            # print(gb.display[y][x-x2], x2)
+                            x2 += 1
+                        break
+                    # print(gb.display[y][x+x1], x1)
+                    x1 += 1
         if not(gb.thru) or x >= 121:
             gb.Xspeed -= gb.Xspeed*2
             print("collison right")
@@ -260,6 +325,27 @@ class collision:
             gb.score += 2
 
     def withLeft(self, y, x):
+        if gb.fireball:
+            gb.display[y][x] == 69
+            gb.score += 1
+            og_lvl = gb.display[y][x]
+            if not(gb.exp) and not(gb.thru):
+                x1 = 0
+                while x1 < 4:
+                    if gb.display[y][x+x1] == og_lvl:
+                        gb.display[y][x+x1] = 69
+                    else:
+                        x2 = 1
+                        while x2 < 4:
+                            if gb.display[y][x-x2] == og_lvl:
+                                gb.display[y][x-x2] = 69
+                            else:
+                                break
+                            # print(gb.display[y][x-x2], x2)
+                            x2 += 1
+                        break
+                    # print(gb.display[y][x+x1], x1)
+                    x1 += 1
         if not(gb.thru) or x <= 1:
             gb.Xspeed -= gb.Xspeed*2
             print("collison left")
@@ -271,6 +357,27 @@ class collision:
             gb.score += 2
 
     def withTopRight(self, y, x):
+        if gb.fireball:
+            gb.display[y][x] == 69
+            gb.score += 1
+            og_lvl = gb.display[y][x]
+            if not(gb.exp) and not(gb.thru):
+                x1 = 0
+                while x1 < 4:
+                    if gb.display[y][x+x1] == og_lvl:
+                        gb.display[y][x+x1] = 69
+                    else:
+                        x2 = 1
+                        while x2 < 4:
+                            if gb.display[y][x-x2] == og_lvl:
+                                gb.display[y][x-x2] = 69
+                            else:
+                                break
+                            # print(gb.display[y][x-x2], x2)
+                            x2 += 1
+                        break
+                    # print(gb.display[y][x+x1], x1)
+                    x1 += 1
         if not(gb.thru):
             gb.Xspeed -= gb.Xspeed*2
             gb.Yspeed -= gb.Yspeed*2
@@ -284,6 +391,27 @@ class collision:
             gb.score += 2
 
     def withTopLeft(self, y, x):
+        if gb.fireball:
+            gb.display[y][x] == 69
+            gb.score += 1
+            og_lvl = gb.display[y][x]
+            if not(gb.exp) and not(gb.thru):
+                x1 = 0
+                while x1 < 4:
+                    if gb.display[y][x+x1] == og_lvl:
+                        gb.display[y][x+x1] = 69
+                    else:
+                        x2 = 1
+                        while x2 < 4:
+                            if gb.display[y][x-x2] == og_lvl:
+                                gb.display[y][x-x2] = 69
+                            else:
+                                break
+                            # print(gb.display[y][x-x2], x2)
+                            x2 += 1
+                        break
+                    # print(gb.display[y][x+x1], x1)
+                    x1 += 1
         if not(gb.thru):
             gb.Xspeed -= gb.Xspeed*2
             gb.Yspeed -= gb.Yspeed*2
@@ -297,6 +425,27 @@ class collision:
             gb.score += 2
 
     def withBottomRight(self, y, x):
+        if gb.fireball:
+            gb.display[y][x] == 69
+            gb.score += 1
+            og_lvl = gb.display[y][x]
+            if not(gb.exp) and not(gb.thru):
+                x1 = 0
+                while x1 < 4:
+                    if gb.display[y][x+x1] == og_lvl:
+                        gb.display[y][x+x1] = 69
+                    else:
+                        x2 = 1
+                        while x2 < 4:
+                            if gb.display[y][x-x2] == og_lvl:
+                                gb.display[y][x-x2] = 69
+                            else:
+                                break
+                            # print(gb.display[y][x-x2], x2)
+                            x2 += 1
+                        break
+                    # print(gb.display[y][x+x1], x1)
+                    x1 += 1
         if not(gb.thru):
             gb.Xspeed -= gb.Xspeed*2
             gb.Yspeed -= gb.Yspeed*2
@@ -310,6 +459,27 @@ class collision:
             gb.score += 2
 
     def withBottomLeft(self, y, x):
+        if gb.fireball:
+            gb.display[y][x] == 69
+            gb.score += 1
+            og_lvl = gb.display[y][x]
+            if not(gb.exp) and not(gb.thru):
+                x1 = 0
+                while x1 < 4:
+                    if gb.display[y][x+x1] == og_lvl:
+                        gb.display[y][x+x1] = 69
+                    else:
+                        x2 = 1
+                        while x2 < 4:
+                            if gb.display[y][x-x2] == og_lvl:
+                                gb.display[y][x-x2] = 69
+                            else:
+                                break
+                            # print(gb.display[y][x-x2], x2)
+                            x2 += 1
+                        break
+                    # print(gb.display[y][x+x1], x1)
+                    x1 += 1
         if not(gb.thru):
             gb.Xspeed -= gb.Xspeed*2
             gb.Yspeed -= gb.Yspeed*2
@@ -327,3 +497,10 @@ class collision:
         pu.startpu(set)
         gb.actpowerup.append(pu)
         print("pu caught")
+
+    def bulletWithTop(self, y, x):
+        # gb.Yspeed -= gb.Yspeed*2
+        print("collison top", gb.display[y][x])
+        # gb.motionUp = False
+        # gb.exp = False
+        self.brickLvlDown(y, x)

@@ -57,11 +57,12 @@ class powerupShootingSlider(powerup):
 
     def startpu(self, setup):
         # print(setup.slider,"pufile")
-        setup.slider.updateLength(9)
+        gb.shoottime = gb.time
+        gb.shootingslider = True
 
     def endup(self, setup):
         # print(setup.slider,"pufile")
-        setup.slider.updateLength(9)
+        gb.shootingslider = False
 
 
 class powerupFastBall(powerup):
@@ -106,3 +107,18 @@ class powerupPaddlegrab(powerup):
     def endup(self, setup):
         # print(setup.slider,"pufile")
         gb.pugrab = False
+
+
+class powerupFireball(powerup):
+    def __init__(self, y, x):
+        self.powerupNum = 12307
+        super().__init__(y, x)
+
+    def startpu(self, setup):
+        # print(setup.slider,"pufile")
+        gb.fireballtime = gb.time
+        gb.fireball = True
+
+    def endup(self, setup):
+        # print(setup.slider,"pufile")
+        gb.fireball = False

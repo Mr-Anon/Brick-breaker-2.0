@@ -24,6 +24,7 @@ lives = 10
 exp = False
 thru = False
 pugrab = False
+fireball = True
 lvlupkeypress = False
 shootingslider = False
 tempsliderlen = 0
@@ -37,4 +38,8 @@ grabtime = 0
 thrutime = 0
 fasttime = 0
 multime = 0
+shoottime = 0
+fireballtime = 0
+
+bullets= []
 

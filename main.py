@@ -27,6 +27,10 @@ def endpu(set):
         for powerup in gb.actpowerup:
             if powerup.powerupNum == 12302:
                 powerup.endup(set)
+    if int(gb.time) > int(gb.shoottime) + timeout:
+        for powerup in gb.actpowerup:
+            if powerup.powerupNum == 12303:
+                powerup.endup(set)
     if int(gb.time) > int(gb.thrutime) + timeout:
         for powerup in gb.actpowerup:
             if powerup.powerupNum == 12305:
@@ -39,10 +43,17 @@ def endpu(set):
         for powerup in gb.actpowerup:
             if powerup.powerupNum == 12306:
                 powerup.endup(set)
+    if int(gb.time) > int(gb.fireballtime) + timeout:
+        for powerup in gb.actpowerup:
+            if powerup.powerupNum == 12307:
+                powerup.endup(set)
+
+
+
 def deactiveallpp(set):
     for powerup in gb.actpowerup:
         powerup.endup(set)
-    
+
 
 def alarmHandler(signum, frame):
     raise AlarmException
@@ -67,19 +78,19 @@ def input_to(timeout=1):
 curlvl = gb.Current_lvl
 set = setup.setup()
 set.createlvl1()
-slider_x = 61
+slider_x = 57
 slider_y = 35
 
 
 while True:
     os.system('clear')
-    set.display1.renderDisplay()
+    set.display1.renderDisplay(set)
     if gb.Current_lvl > 3:
         print("ggwp")
         sys.exit()
     if curlvl != gb.Current_lvl:
         deactiveallpp(set)
-        slider_x = 61
+        slider_x = 57
         print("lvl 2 should start now")
         curlvl = gb.Current_lvl
         if curlvl == 2:
@@ -114,7 +125,7 @@ while True:
                 gb.display[34] = -1
             elif c == 'l':
                 set.ball1.updateYX(set.slider.Ycor-1, set.slider.Xcor+3)
-                slider_x = 61
+                slider_x = 57
                 # time.sleep(1)
                 gb.lvlupkeypress = True
                 set.display1.lvlup()
@@ -137,7 +148,8 @@ while True:
 
         gb.powerup = set.display1.dropPowerUP(gb.powerup, set)
         if not(gb.grab):
-            set.ball1.updateYX(set.ball1.Ycor+gb.Yspeed, set.ball1.Xcor+gb.Xspeed)
+            set.ball1.updateYX(set.ball1.Ycor+gb.Yspeed,
+                               set.ball1.Xcor+gb.Xspeed)
             set.display1.updateBall(set, set.ball1, gb.Yspeed, gb.Xspeed)
         gb.time = (time.time() - start_time)//1
         gb.tempsliderlen = set.slider.slider_length
