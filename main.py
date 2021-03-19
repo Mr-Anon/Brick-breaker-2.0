@@ -49,7 +49,6 @@ def endpu(set):
                 powerup.endup(set)
 
 
-
 def deactiveallpp(set):
     for powerup in gb.actpowerup:
         powerup.endup(set)
@@ -83,9 +82,15 @@ slider_y = 35
 
 
 while True:
+    if gb.bosskihealth <= 0:
+        print("GGWP")
+        sys.exit()
+    if gb.lives <= 0:
+        print("NT")
+        sys.exit()
     os.system('clear')
     set.display1.renderDisplay(set)
-    if gb.Current_lvl > 3:
+    if gb.Current_lvl > 4:
         print("ggwp")
         sys.exit()
     if curlvl != gb.Current_lvl:
@@ -101,6 +106,11 @@ while True:
             set = setup.setup()
             set.ball1.updateYX(set.slider.Ycor-1, set.slider.Xcor+3)
             set.createlvl3()
+        if curlvl == 4:
+            set = setup.setup()
+            set.ball1.updateYX(set.slider.Ycor-1, set.slider.Xcor+3)
+            set.createbosslvl()
+
     else:
         a = 2
         while a:
@@ -114,6 +124,7 @@ while True:
                 if slider_x <= 114:
                     slider_x += 1
                     set.slider.moveSlider(1)
+                    set.display1.moveBossRight(set)
                     if gb.grab == True:
                         set.display1.updateBall(set, set.ball1, 0, 1)
                         set.ball1.updateYX(set.ball1.Ycor, set.ball1.Xcor+1)
@@ -137,6 +148,7 @@ while True:
                 if slider_x >= 0:
                     slider_x -= 1
                     set.slider.moveSlider(-1)
+                    set.display1.moveBossLeft(set)
                     if gb.grab == True:
                         set.display1.updateBall(set, set.ball1, 0, -1)
                         set.ball1.updateYX(set.ball1.Ycor, set.ball1.Xcor-1)

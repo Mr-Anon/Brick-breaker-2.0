@@ -26,14 +26,14 @@ thru = False
 pugrab = False
 fireball = False
 lvlupkeypress = False
-shootingslider = True
-sound = False
+shootingslider = False
+sound = True
 tempsliderlen = 0
 tempogtimeout = 0
-Current_lvl = 1 
+Current_lvl = 1
 
-#time for powerups
-expandtime = 0 
+# time for powerups
+expandtime = 0
 shrinktime = 0
 grabtime = 0
 thrutime = 0
@@ -42,5 +42,7 @@ multime = 0
 shoottime = 0
 fireballtime = 0
 
-bullets= []
+bullets = []
 
+
+bosskihealth = 15

@@ -273,13 +273,17 @@ class collision:
             print("collison top", gb.display[y][x])
             gb.motionUp = False
             gb.exp = False
-            self.brickLvlDown(y, x)
+            if gb.Current_lvl == 4 and gb.display[y][x] == 111:
+                gb.bosskihealth -= 1
+                gb.score += 10
+            else:
+                self.brickLvlDown(y, x)
         else:
             self.brickLvlDown(y, x)
             gb.score += 2
 
     def withBottom(self, y, x):
-        if gb.fireball and gb.display[y][x]!=2019111026:
+        if gb.fireball and gb.display[y][x] != 2019111026:
             gb.score += 1
             og_lvl = gb.display[y][x]
             gb.display[y][x] == 69
@@ -338,7 +342,11 @@ class collision:
             print("collison right")
             gb.motionRight = False
             gb.exp = False
-            self.brickLvlDown(y, x)
+            if gb.Current_lvl == 4 and gb.display[y][x] == 111:
+                gb.bosskihealth -= 1
+                gb.score += 10
+            else:
+                self.brickLvlDown(y, x)
         else:
             self.brickLvlDown(y, x)
             gb.score += 2
@@ -370,7 +378,11 @@ class collision:
             print("collison left")
             gb.motionRight = True
             gb.exp = False
-            self.brickLvlDown(y, x)
+            if gb.Current_lvl == 4 and gb.display[y][x] == 111:
+                gb.bosskihealth -= 1
+                gb.score += 10
+            else:
+                self.brickLvlDown(y, x)
         else:
             self.brickLvlDown(y, x)
             gb.score += 2
@@ -404,7 +416,11 @@ class collision:
             gb.motionUp = False
             gb.motionRight = False
             gb.exp = False
-            self.brickLvlDown(y, x)
+            if gb.Current_lvl == 4 and gb.display[y][x] == 111:
+                gb.bosskihealth -= 1
+                gb.score += 10
+            else:
+                self.brickLvlDown(y, x)
         else:
             self.brickLvlDown(y, x)
             gb.score += 2
@@ -438,7 +454,11 @@ class collision:
             gb.motionUp = False
             gb.motionRight = True
             gb.exp = False
-            self.brickLvlDown(y, x)
+            if gb.Current_lvl == 4 and gb.display[y][x] == 111:
+                gb.bosskihealth -= 1
+                gb.score += 10
+            else:
+                self.brickLvlDown(y, x)
         else:
             self.brickLvlDown(y, x)
             gb.score += 2
@@ -472,7 +492,11 @@ class collision:
             gb.motionUp = True
             gb.motionRight = False
             gb.exp = False
-            self.brickLvlDown(y, x)
+            if gb.Current_lvl == 4 and gb.display[y][x] == 111:
+                gb.bosskihealth -= 1
+                gb.score += 10
+            else:
+                self.brickLvlDown(y, x)
         else:
             self.brickLvlDown(y, x)
             gb.score += 2
@@ -506,7 +530,11 @@ class collision:
             gb.motionUp = True
             gb.motionRight = True
             gb.exp = False
-            self.brickLvlDown(y, x)
+            if gb.Current_lvl == 4 and gb.display[y][x] == 111:
+                gb.bosskihealth -= 1
+                gb.score += 10
+            else:
+                self.brickLvlDown(y, x)
         else:
             self.brickLvlDown(y, x)
             gb.score += 2
@@ -523,3 +551,12 @@ class collision:
         # gb.motionUp = False
         # gb.exp = False
         self.brickLvlDown(y, x)
+
+    def bulletWithBottom(self, y, x):
+        # gb.Yspeed -= gb.Yspeed*2
+        print("bullet collison with", gb.display[y][x])
+        # gb.motionUp = False
+        # gb.exp = False
+        if gb.display[y][x] == 2019111026:
+            gb.lives -= 1
+        # self.brickLvlDown(y, x)

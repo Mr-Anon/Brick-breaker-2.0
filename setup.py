@@ -362,4 +362,33 @@ class setup:
         self.display1.updateBall(self.display1, self.ball1, 0, 0)
     
     def createbosslvl(self):
-        
+        self.layout = []
+        self.layout.append(bricks.brickRainbow(4, 61))
+        self.layout.append(bricks.brickRainbow(4, 65))
+        self.layout.append(bricks.brickRainbow(5, 61))
+        self.layout.append(bricks.brickRainbow(5, 66))
+        self.layout.append(bricks.brickRainbow(5, 71))
+        self.layout.append(bricks.brickRainbow(5, 56))
+        self.layout.append(bricks.brickRainbow(6, 61))
+        self.layout.append(bricks.brickRainbow(6, 66))
+        self.layout.append(bricks.brickRainbow(6, 71))
+        self.layout.append(bricks.brickRainbow(6, 56))
+        self.layout.append(bricks.brickRainbow(7, 66))
+        self.layout.append(bricks.brickRainbow(7, 71))
+        self.layout.append(bricks.brickRainbow(7, 76))
+        self.layout.append(bricks.brickRainbow(7, 61))
+        self.layout.append(bricks.brickRainbow(7, 56))
+        self.layout.append(bricks.brickRainbow(7, 51))
+        self.layout.append(bricks.brickRainbow(8, 66))
+        self.layout.append(bricks.brickRainbow(8, 71))
+        self.layout.append(bricks.brickRainbow(8, 76))
+        self.layout.append(bricks.brickRainbow(9, 71))
+        self.layout.append(bricks.brickRainbow(8, 61))
+        self.layout.append(bricks.brickRainbow(8, 56))
+        self.layout.append(bricks.brickRainbow(9, 56))
+        self.layout.append(bricks.brickRainbow(8, 51))
+
+        self.display1.createlvl(self.layout)
+        self.display1.updateSlider(self.slider)
+        self.display1.updateBall(self.display1, self.ball1, 0, 0)
+

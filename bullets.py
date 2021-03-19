@@ -4,7 +4,12 @@ class bullet:
         self.Ycor = y
         
     def moveup(self):
-        self.Ycor -= 1 
+        self.Ycor -= 1
+    def moveDown(self):
+        self.Ycor += 1 
     def disappear(self):
         self.Xcor = 1
-        self.Ycor = 1       
+        self.Ycor = 1     
+    def disappear2(self):
+        self.Xcor = 1
+        self.Ycor = 34    
