@@ -360,3 +360,6 @@ class setup:
         self.display1.createlvl(self.layout)
         self.display1.updateSlider(self.slider)
         self.display1.updateBall(self.display1, self.ball1, 0, 0)
+    
+    def createbosslvl(self):
+        

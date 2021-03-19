@@ -104,7 +104,7 @@ class display:
 
     def sliderShoot(self,set):
         gb.bullets.append(bullets.bullet(set.slider.Ycor - 1, set.slider.Xcor))        
-        gb.bullets.append(bullets.bullet(set.slider.Ycor - 1, set.slider.Xcor+ self.length))        
+        gb.bullets.append(bullets.bullet(set.slider.Ycor - 1, set.slider.Xcor+ self.length -1))        
         for bullet in gb.bullets:
             gb.display[bullet.Ycor][bullet.Xcor] = 8
     
@@ -130,7 +130,7 @@ class display:
         if ball.Xcor-1 <= 0:
             collision1 = collision.collision()
             collision1.withLeft(ball.Ycor, ball.Xcor)
-        elif ball.Xcor+Xspeed >= 122:
+        elif ball.Xcor+Xspeed >= 121:
             collision1 = collision.collision()
             collision1.withRight(ball.Ycor, ball.Xcor)
         elif ball.Ycor-1 == 0:
@@ -163,6 +163,8 @@ class display:
                     col = False
                     collision1.withBottom(ball.Ycor+1, ball.Xcor)
                     if gb.display[ball.Ycor+1][ball.Xcor] == 2019111026:
+                        
+
                         # print("suyahsd dha;idgh;i")
                         self.bringbricksdown()
 
@@ -201,6 +203,8 @@ class display:
                     collision1 = collision.collision()
                     col = False
                     collision1.withBottomRight(ball.Ycor+1, ball.Xcor+1)
+        if not(col) and gb.sound:
+            os.system("vlc --intf dummy ./Sounds/1.mp3 &" )
 
         # if gb.display[ball.Ycor - Yspeed][ball.Xcor -Xspeed] != 123 and gb.display[ball.Ycor + Yspeed][ball.Xcor +Xspeed] != 123:
             # gb.display[ball.Ycor][ball.Xcor] = 8011
