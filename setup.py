@@ -387,6 +387,10 @@ class setup:
         self.layout.append(bricks.brickRainbow(8, 56))
         self.layout.append(bricks.brickRainbow(9, 56))
         self.layout.append(bricks.brickRainbow(8, 51))
+        self.layout.append(bricks.brickfixed(13, 6))
+        self.layout.append(bricks.brickfixed(13, 46))
+        self.layout.append(bricks.brickfixed(13, 76))
+        self.layout.append(bricks.brickfixed(13, 106))
 
         self.display1.createlvl(self.layout)
         self.display1.updateSlider(self.slider)

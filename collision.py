@@ -76,11 +76,11 @@ class collision:
                     x1 += 1
 
             if (og_lvl == 0 or gb.exp or gb.thru) and gb.Current_lvl != 4:
-                a = random.randint(0, 5)
+                a = random.randint(0, 10)
                 if a < 5:
                     # print("drop powerUp")
                     gb.no_of_powerups += 1
-                    pp = random.randint(7, 7)
+                    pp = random.randint(1, 7)
                     if pp == 1:
                         self.powerup = powerUps.powerupExpandPaddle(y, x)
                     if pp == 2:

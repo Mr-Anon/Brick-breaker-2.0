@@ -20,7 +20,7 @@ actpowerup = []
 # others
 score = 0
 time = 0
-lives = 10
+lives = 50
 exp = False
 thru = False
 pugrab = False
@@ -45,4 +45,4 @@ fireballtime = 0
 bullets = []
 
 
-bosskihealth = 5
+bosskihealth = 7
